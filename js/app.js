@@ -1,26 +1,15 @@
 "use strict";
 
+
+const salesHours = ["6:00AM", "7:00AM", "8:00AM", "9:00AM", "10:00AM", "11:00AM", "12:00PM", "1:00PM", "2:00PM", "3:00PM", "4:00PM", "5:00PM", "6:00PM", "7:00PM"];
+
+
 function CreateStore(cityName, minCust, maxCust, avgTik) {
   this.cityName = cityName;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgTik = avgTik;
-  this.salesHours = [
-    "6AM",
-    "7AM",
-    "8AM",
-    "9AM",
-    "10AM",
-    "11AM",
-    "12PM",
-    "1PM",
-    "2PM",
-    "3PM",
-    "4PM",
-    "5PM",
-    "6PM",
-    "7PM",
-  ];
+
 }
 
 
@@ -53,7 +42,7 @@ CreateStore.prototype.createRow = function () {
   
   let totalCookies = 0
 
-  for (let i = 0; i < this.salesHours.length; i++) {
+  for (let i = 0; i < salesHours.length; i++) {
     let randomCookies = this.hourlyCookies();
     totalCookies += randomCookies
    storeCol = document.createElement("td");
@@ -66,15 +55,41 @@ CreateStore.prototype.createRow = function () {
   storeCol.textContent = totalCookies;
   storeRow.appendChild(storeCol);
 
-
 }
 
 
 
+function createHeader() {
+  let findTable = document.getElementById("storeSales")
+  let storeHeader = document.createElement("tr")
+  let headerCol = document.createElement("th")
+
+  findTable.appendChild(storeHeader)
+  storeHeader.appendChild(headerCol)
+  
 
 
+for (let i = 0; i < salesHours.length; i++) {
+  
+    headerCol = document.createElement("th")
+    headerCol.textContent = salesHours[i]
+    storeHeader.appendChild(headerCol);
+
+}
 
 
+headerCol = document.createElement("th")
+headerCol.textContent = "Daily Location Total"
+storeHeader.appendChild(headerCol)
+}
+
+
+function createFooter() {
+
+}
+
+
+ createHeader();
 let seattleStore = new CreateStore("Seattle", 23, 65, 6.3);
 seattleStore.createRow();
 
