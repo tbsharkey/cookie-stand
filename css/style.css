@@ -1,11 +1,15 @@
 table {
     width: 100%;
     border-collapse: collapse;
+    background-color: seashell;
+    color: black;
+    border: solid black 1px;
+    padding: 12px;
   }
   
   /* Style table header */
   th {
-    background-color: #f2f2f2;
+    
     text-align: left;
     padding: 8px;
   }
@@ -21,13 +25,34 @@ table {
     border: 1px solid black;
   }
   
+
+  #storeSales td:first-child {
+    font-weight: bold;
+  }
   /* Add alternate row color */
   tr:nth-child(even) {
-    background-color: #f2f2f2;
+    
   }
 
+  tr:nth-child(odd) {
+    
+  }
+
+  nav {
+    float: right;
+  }
+
+  header{
+    text-align: center;
+  }
+
+
+body {
+  background-color: salmon;
+  color: #008080;
+}
 footer {
-    position: relative;
+    position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
