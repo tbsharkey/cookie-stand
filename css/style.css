@@ -1,3 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+}
+
+nav {
+  background-color: #797777;
+  color: #211e1e;
+  display: flex;
+  justify-content: flex-end; 
+  height: auto;
+  margin-top: 0;
+}
+
+nav img {
+  height: 50px;
+  width: 50px;
+  float: left;
+}
+
+nav a {
+  margin-left: 10px; 
+}
+
+
+body {
+  background-color: salmon;
+  color: #008080;
+
+}
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #f2f2f2;
+    color: #333;
+    text-align: center;
+    padding: 5px;
+    line-height: 1;
+}
+
+/* Table Section */
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -29,36 +77,3 @@ table {
   #storeSales td:first-child {
     font-weight: bold;
   }
-  /* Add alternate row color */
-  tr:nth-child(even) {
-    
-  }
-
-  tr:nth-child(odd) {
-    
-  }
-
-  nav {
-    float: right;
-  }
-
-  header{
-    text-align: center;
-  }
-
-
-body {
-  background-color: salmon;
-  color: #008080;
-}
-footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #f2f2f2;
-    color: #333;
-    text-align: center;
-    padding: 5px;
-    line-height: 1;
-}
