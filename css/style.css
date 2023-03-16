@@ -3,9 +3,21 @@
   padding: 0;
 }
 
+h1 {
+  text-align: center;
+}
+
 h1, h2{
   font-family: 'Abril Fatface', cursive;
   
+}
+
+li {
+  list-style: none;
+  font-family: 'Abril Fatface', cursive;
+  font: 1.5rem;
+  
+
 }
 
 .left {
@@ -27,12 +39,14 @@ nav {
   justify-content: flex-end; 
   height: auto;
   margin-top: 0;
+  line-height: 90px;
 }
 
 nav img {
-  height: 50px;
-  width: 50px;
-  float: left;
+  height: 90px;
+  width: 90px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 nav a {
@@ -43,6 +57,7 @@ nav a {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  padding: 50px;
 }
 
 body {
@@ -50,6 +65,12 @@ body {
   color: #008080;
 
 }
+
+section {
+  border: solid black 1px;
+  background-color: #FFFDD0;
+}
+
 footer {
     position: fixed;
     left: 0;
