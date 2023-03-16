@@ -3,8 +3,9 @@
   padding: 0;
 }
 
-h1 {
-  text-align: center;
+h1, h2{
+  font-family: 'Abril Fatface', cursive;
+  
 }
 
 .left {
@@ -66,10 +67,11 @@ footer {
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: seashell;
-    color: black;
+    background-color: #FFFDD0;
+    color: #403F3B;
     border: solid black 1px;
     padding: 12px;
+    font-family: Arial, Helvetica, sans-serif;
   }
   
   /* Style table header */
