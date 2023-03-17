@@ -6,24 +6,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Salmon Cookies</title>
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Space+Mono&family=Tilt+Warp&display=swap" rel="stylesheet">
   </head>
   <body>
     <header>
       <nav>
-        <a href="index.html"><h3>Home Page</h3></a>
+        <ul class="nav-list">
+          <img src="image/fish.jpg" alt="A fish" >
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+          <a href="sales.html">Sales</a>
+        </li>
+        <li>
+          <a href="contact-us.html">Contact Us</a>
+        </li>
+      </ul>
       </nav>
     </header>
     <main>
-      <h2>Seattle Sales</h2>
-      <ul id="seattleSales"></ul>
-      <h2>Tokyo Sales</h2>
-      <ul id="tokyoSales"></ul>
-      <h2>Dubai Sales</h2>
-      <ul id="dubaiSales"></ul>
-      <h2>Paris Sales</h2>
-      <ul id="parisSales"></ul>
-      <h2>Lima Sales</h2>
-      <ul id="limaSales"></ul>
+      <img src="image/frosted-cookie.jpg" alt="A Salmon Cookie" class="center-image">
+      <h1>Hourly Sales by Store</h1>
+      <table id="storeSales">
+
+      </table>
+
+      <form>
+        <fieldset>
+          <legend>Add a New City with Customer Data</legend>
+      
+          <div class="form-group">
+            <div class="form-column">
+              <label for="cityName">City Name</label>
+              <input type="text" name="cityName" required>
+            </div>
+      
+            <div class="form-column">
+              <label for="mincust">Minimum Customers Per Hour</label>
+              <input type="text" name="mincust" required>
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <div class="form-column">
+              <label for= "maxcust">Maximum Customers Per Hour: </label>
+              <input type="text" name="maxcust">
+            </div>
+      
+            <div class="form-column">
+              <label for="avgCookies">Average Cookies Sold per Customer</label>
+              <input type="text" name="avgCookies" required>
+            </div>
+          </div>
+      
+          <div class="form-group">
+            <input id="button" type="submit" value="Add city to the Table">
+          </div>
+      
+        </fieldset>
+      </form>
+
+
+
+<h1>More Items to Come Soon!</h1>
+<img src="image/shirt.jpg" alt="A shirt" class="center-image">
+
+      
     </main>
     <footer>
       <p>Made for Code Fellows class seattle-code-201d98a</p>

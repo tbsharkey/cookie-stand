@@ -1,192 +1,150 @@
 "use strict";
 
-let seattleStore = {
-  minCustomers: 23,
-  maxCustomers: 65,
-  averageTicket: 6.3,
-  salesHours: ["6AM", "7AM", "8AM", "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM", "7PM"],
 
-  randomCustomerCount(min, max) {
-    let num = Math.random();
-    let range = max - min + 1;
-    let randomNumber = Math.floor(num * range) + min;
-    return randomNumber;
-  },
+const salesHours = ["6:00AM", "7:00AM", "8:00AM", "9:00AM", "10:00AM", "11:00AM", "12:00PM", "1:00PM", "2:00PM", "3:00PM", "4:00PM", "5:00PM", "6:00PM", "7:00PM"];
 
-  hourlyCookies() {
-    let customerCount = this.randomCustomerCount(this.minCustomers, this.maxCustomers);
-    let randomTicket = this.averageTicket * customerCount;
-    return Math.floor(randomTicket);
-  },
+let allStores = []
+function CreateStore(cityName, minCust, maxCust, avgTik) {
+  this.cityName = cityName;
+  this.minCust = minCust;
+  this.maxCust = maxCust;
+  this.avgTik = avgTik;
+  this.cookiesArray = []
+  this.total = 0;
+  allStores.push(this)
 
-  createList: function() {
-    for (let i = 0; i < this.salesHours.length; i++) {
-      let li = document.createElement("li");
-      li.textContent = `${this.salesHours[i]}: ${this.hourlyCookies()} cookies`;
-      seattleCookieTotal.appendChild(li);
-    }
-    let totalCookiePerStore = 0;
-    for (let i = 0; i < this.salesHours.length; i++) {
-      totalCookiePerStore += this.hourlyCookies();
-    }
-    let li = document.createElement("li");
-    li.textContent = `Total: ${totalCookiePerStore} cookies`;
-    seattleCookieTotal.appendChild(li);
+}
+
+CreateStore.prototype.randomCustomerCount = function (min, max) {
+  let num = Math.random();
+  let range = max - min + 1;
+  let randomNumber = Math.floor(num * range) + min;
+  return randomNumber;
+};
+
+CreateStore.prototype.hourlyCookies = function () {
+
+  for(let i = 0; i < salesHours.length; i++) {
+  let customerCount = this.randomCustomerCount(this.minCust, this.maxCust);
+  let randomTicket = Math.floor(this.avgTik * customerCount);
+  this.cookiesArray.push(randomTicket);
+  this.total += randomTicket;
   }
 };
 
-let seattleCookieTotal = document.getElementById("seattleSales");
-seattleStore.createList();
+CreateStore.prototype.createRow = function () {
+  this.hourlyCookies()
+  let storeTable = document.getElementById("storeSales");
+  let storeRow = document.createElement("tr");
+  let storeCol = document.createElement("td");
 
+  storeCol.textContent = this.cityName
 
-let tokyoStore = {
-  minCustomers: 3,
-  maxCustomers: 24,
-  averageTicket: 1.2,
-  salesHours: ["6AM", "7AM", "8AM", "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM", "7PM"],
+  storeRow.appendChild(storeCol)
+  storeTable.appendChild(storeRow)
+  
 
-  randomCustomerCount(min, max) {
-    let num = Math.random();
-    let range = max - min + 1;
-    let randomNumber = Math.floor(num * range) + min;
-    return randomNumber;
-  },
+  for (let i = 0; i < salesHours.length; i++) {
 
-  hourlyCookies() {
-    let customerCount = this.randomCustomerCount(this.minCustomers, this.maxCustomers);
-    let randomTicket = this.averageTicket * customerCount;
-    return Math.floor(randomTicket);
-  },
+   storeCol = document.createElement("td");
+  storeCol.textContent = this.cookiesArray[i]
 
-  createList: function() {
-    for (let i = 0; i < this.salesHours.length; i++) {
-      let li = document.createElement("li");
-      li.textContent = `${this.salesHours[i]}: ${this.hourlyCookies()} cookies`;
-      tokyoCookieTotal.appendChild(li);
-    }
-    let totalCookiePerStore = 0;
-    for (let i = 0; i < this.salesHours.length; i++) {
-      totalCookiePerStore += this.hourlyCookies();
-    }
-    let li = document.createElement("li");
-    li.textContent = `Total: ${totalCookiePerStore} cookies`;
-    tokyoCookieTotal.appendChild(li);
+    storeRow.appendChild(storeCol);
   }
-};
 
-let tokyoCookieTotal = document.getElementById("tokyoSales");
-tokyoStore.createList();
+  storeCol = document.createElement("td");
+  storeCol.textContent = this.total;
+  storeRow.appendChild(storeCol);
 
-let dubaiStore = {
-  minCustomers: 11,
-  maxCustomers: 38,
-  averageTicket: 3.7,
-  salesHours: ["6AM", "7AM", "8AM", "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM", "7PM"],
+}
 
-  randomCustomerCount(min, max) {
-    let num = Math.random();
-    let range = max - min + 1;
-    let randomNumber = Math.floor(num * range) + min;
-    return randomNumber;
-  },
 
-  hourlyCookies() {
-    let customerCount = this.randomCustomerCount(this.minCustomers, this.maxCustomers);
-    let randomTicket = this.averageTicket * customerCount;
-    return Math.floor(randomTicket);
-  },
 
-  createList: function() {
-    for (let i = 0; i < this.salesHours.length; i++) {
-      let li = document.createElement("li");
-      li.textContent = `${this.salesHours[i]}: ${this.hourlyCookies()} cookies`;
-      dubaiCookieTotal.appendChild(li);
-    }
-    let totalCookiePerStore = 0;
-    for (let i = 0; i < this.salesHours.length; i++) {
-      totalCookiePerStore += this.hourlyCookies();
-    }
-    let li = document.createElement("li");
-    li.textContent = `Total: ${totalCookiePerStore} cookies`;
-    dubaiCookieTotal.appendChild(li);
+function createHeader() {
+  let findTable = document.getElementById("storeSales")
+  let storeHeader = document.createElement("tr")
+  let headerCol = document.createElement("th")
+
+  findTable.appendChild(storeHeader)
+  storeHeader.appendChild(headerCol)
+  
+
+
+for (let i = 0; i < salesHours.length; i++) {
+  
+    headerCol = document.createElement("th")
+    headerCol.textContent = salesHours[i]
+    storeHeader.appendChild(headerCol);
+
   }
-};
 
-let dubaiCookieTotal = document.getElementById("dubaiSales");
-dubaiStore.createList();
+headerCol = document.createElement("th")
+headerCol.textContent = "Daily Location Total"
+storeHeader.appendChild(headerCol)
 
-let parisStore = {
-  minCustomers: 20,
-  maxCustomers: 38,
-  averageTicket: 2.3,
-  salesHours: ["6AM", "7AM", "8AM", "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM", "7PM"],
+}
 
-  randomCustomerCount(min, max) {
-    let num = Math.random();
-    let range = max - min + 1;
-    let randomNumber = Math.floor(num * range) + min;
-    return randomNumber;
-  },
 
-  hourlyCookies() {
-    let customerCount = this.randomCustomerCount(this.minCustomers, this.maxCustomers);
-    let randomTicket = this.averageTicket * customerCount;
-    return Math.floor(randomTicket);
-  },
+function createFooter() {
+let findFooter = document.getElementById("storeSales")
+let footerRow = document.createElement("tr")
+findFooter.appendChild(footerRow)
+let footerCol = document.createElement("td")
+footerRow.appendChild(footerCol)
+footerCol.textContent = "Hourly Totals"
 
-  createList: function() {
-    for (let i = 0; i < this.salesHours.length; i++) {
-      let li = document.createElement("li");
-      li.textContent = `${this.salesHours[i]}: ${this.hourlyCookies()} cookies`;
-      parisCookieTotal.appendChild(li);
-    }
-    let totalCookiePerStore = 0;
-    for (let i = 0; i < this.salesHours.length; i++) {
-      totalCookiePerStore += this.hourlyCookies();
-    }
-    let li = document.createElement("li");
-    li.textContent = `Total: ${totalCookiePerStore} cookies`;
-    parisCookieTotal.appendChild(li);
-  }
-};
+let grandTotal = 0
 
-let parisCookieTotal = document.getElementById("parisSales");
-parisStore.createList();
+ for (let i = 0; i < salesHours.length; i++) {
+   let colTotal = 0
+   for (let j = 0; j < allStores.length; j++ ) {
 
-let limaStore = {
-  minCustomers: 2,
-  maxCustomers: 16,
-  averageTicket: 4.6,
-  salesHours: ["6AM", "7AM", "8AM", "9AM", "10AM", "11AM", "12PM", "1PM", "2PM", "3PM", "4PM", "5PM", "6PM", "7PM"],
+   colTotal += allStores[j].cookiesArray[i]
+   grandTotal += allStores[j].cookiesArray[i]
 
-  randomCustomerCount(min, max) {
-    let num = Math.random();
-    let range = max - min + 1;
-    let randomNumber = Math.floor(num * range) + min;
-    return randomNumber;
-  },
+   }
+   let colSum = document.createElement("td")
+   colSum.textContent = colTotal
+   footerRow.appendChild(colSum)
+ }
 
-  hourlyCookies() {
-    let customerCount = this.randomCustomerCount(this.minCustomers, this.maxCustomers);
-    let randomTicket = this.averageTicket * customerCount;
-    return Math.floor(randomTicket);
-  },
+ let tdGrand = document.createElement("td")
+ tdGrand.textContent = grandTotal
+ footerRow.appendChild(tdGrand)
 
-  createList: function() {
-    for (let i = 0; i < this.salesHours.length; i++) {
-      let li = document.createElement("li");
-      li.textContent = `${this.salesHours[i]}: ${this.hourlyCookies()} cookies`;
-      limaCookieTotal.appendChild(li);
-    }
-    let totalCookiePerStore = 0;
-    for (let i = 0; i < this.salesHours.length; i++) {
-      totalCookiePerStore += this.hourlyCookies();
-    }
-    let li = document.createElement("li");
-    li.textContent = `Total: ${totalCookiePerStore} cookies`;
-    limaCookieTotal.appendChild(li);
-  }
-};
+}
 
-let limaCookieTotal = document.getElementById("limaSales");
-limaStore.createList();
+
+
+createHeader();
+let seattleStore = new CreateStore("Seattle", 23, 65, 6.3);
+seattleStore.createRow();
+console.log(seattleStore);
+let tokyoStore  = new CreateStore("Tokyo", 3, 24, 1.2);
+tokyoStore.createRow();
+
+let dubaiStore = new CreateStore("Dubai", 11, 38, 3.7);
+dubaiStore.createRow();
+
+let parisStore = new CreateStore("Paris", 20, 38, 2.3);
+parisStore.createRow();
+
+let limaStore = new CreateStore("Lima", 2, 16, 4.6);
+limaStore.createRow();
+createFooter(); 
+
+const form = document.querySelector('form');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault(); 
+
+  const cityName = event.target.elements.cityName.value;
+  const minCust = parseInt(event.target.elements.mincust.value);
+  const maxCust = parseInt(event.target.elements.maxcust.value);
+  const avgCookies = parseFloat(event.target.elements.avgCookies.value);
+
+  const newStore = new CreateStore(cityName, minCust, maxCust, avgCookies);
+  newStore.createRow();
+
+  event.target.reset();
+});
