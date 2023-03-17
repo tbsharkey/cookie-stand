@@ -11,12 +11,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Space+Mono&family=Tilt+Warp&display=swap" rel="stylesheet">
   </head>
   <body>
-    <header>
+    header>
       <nav>
-        <img src="image/fish.jpg" alt="A fish" >
-        <a href="index.html"><li>Home</li></a>
-        <a href="sales.html"><li>Sales</li></a>
-        <a href="contact-us.html"><li>Contact Us</li></a>
+        <ul class="nav-list">
+          <img src="image/fish.jpg" alt="A fish" >
+          <li>
+            <a href="index.html">Home</a>
+          </li>
+          <li>
+          <a href="sales.html">Sales</a>
+        </li>
+        <li>
+          <a href="contact-us.html">Contact Us</a>
+        </li>
+      </ul>
       </nav>
     </header>
     <main>
@@ -25,6 +33,33 @@
       <table id="storeSales">
 
       </table>
+
+      <form action="">
+        <fieldset>
+          <legend>Add a New City with Customer Data</legend>
+
+          <div>
+            <label for="cityName">City Name</label>
+            <input type="text" name="cityName" required>
+
+            <label for="mincust">Minimum Customers Per Hour</label>
+            <input type="text" name="mincust" required>
+          </div>
+
+          <div>
+            <label for= "maxcust">Maximum Customers Per Hour: </label>
+            <input type="text" name="maxcust">
+
+            <label for="avgCookies">Average Cookies Sold per Customer</label>
+            <input type="text" name="avgCookies" required>
+          </div>
+
+          <input id="button" type="submit" value="Add city to the Table">
+        </fieldset>
+      </form>
+
+
+
 <h1>More Items to Come Soon!</h1>
 <img src="image/shirt.jpg" alt="A shirt" class="center-image">
 
