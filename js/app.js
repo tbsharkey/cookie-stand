@@ -15,8 +15,6 @@ function CreateStore(cityName, minCust, maxCust, avgTik) {
 
 }
 
-
-
 CreateStore.prototype.randomCustomerCount = function (min, max) {
   let num = Math.random();
   let range = max - min + 1;
@@ -117,6 +115,7 @@ let grandTotal = 0
 }
 
 
+
 createHeader();
 let seattleStore = new CreateStore("Seattle", 23, 65, 6.3);
 seattleStore.createRow();
@@ -133,3 +132,19 @@ parisStore.createRow();
 let limaStore = new CreateStore("Lima", 2, 16, 4.6);
 limaStore.createRow();
 createFooter(); 
+
+const form = document.querySelector('form');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault(); 
+
+  const cityName = event.target.elements.cityName.value;
+  const minCust = parseInt(event.target.elements.mincust.value);
+  const maxCust = parseInt(event.target.elements.maxcust.value);
+  const avgCookies = parseFloat(event.target.elements.avgCookies.value);
+
+  const newStore = new CreateStore(cityName, minCust, maxCust, avgCookies);
+  newStore.createRow();
+
+  event.target.reset();
+});

@@ -34,28 +34,32 @@
 
       </table>
 
-      <form action="">
+      <form>
         <fieldset>
           <legend>Add a New City with Customer Data</legend>
       
           <div class="form-group">
-            <label for="cityName">City Name</label>
-            <input type="text" name="cityName" required>
+            <div class="form-column">
+              <label for="cityName">City Name</label>
+              <input type="text" name="cityName" required>
+            </div>
+      
+            <div class="form-column">
+              <label for="mincust">Minimum Customers Per Hour</label>
+              <input type="text" name="mincust" required>
+            </div>
           </div>
       
           <div class="form-group">
-            <label for="mincust">Minimum Customers Per Hour</label>
-            <input type="text" name="mincust" required>
-          </div>
+            <div class="form-column">
+              <label for= "maxcust">Maximum Customers Per Hour: </label>
+              <input type="text" name="maxcust">
+            </div>
       
-          <div class="form-group">
-            <label for= "maxcust">Maximum Customers Per Hour: </label>
-            <input type="text" name="maxcust">
-          </div>
-      
-          <div class="form-group">
-            <label for="avgCookies">Average Cookies Sold per Customer</label>
-            <input type="text" name="avgCookies" required>
+            <div class="form-column">
+              <label for="avgCookies">Average Cookies Sold per Customer</label>
+              <input type="text" name="avgCookies" required>
+            </div>
           </div>
       
           <div class="form-group">

@@ -153,8 +153,18 @@ legend {
   .form-group {
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  .form-column {
+    width: calc(50% - 10px);
+  }
+  
+  .form-column label,
+  .form-column input {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
   }
   
   .form-group label {
